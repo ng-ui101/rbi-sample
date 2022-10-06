@@ -15,7 +15,7 @@ const routes: Routes = [
         ]
     },
     { path: 'css-layout', component: CssLayoutPageComponent },
-    { path: '**', component: TodosPageComponent }
+    { path: '**', redirectTo: 'todos' }
 ];
 
 @NgModule({
