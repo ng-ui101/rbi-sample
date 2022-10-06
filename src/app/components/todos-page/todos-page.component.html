@@ -1,9 +1,11 @@
 <p>todos-page works!</p>
-<app-todos-table [todosData]="searchData"></app-todos-table>
-<app-table-navigation
-    [disableNext]="disableNext"
-    [disablePrevious]="disablePrevious"
-    (toNext)="nextPage()"
-    (toPrevious)="previousPage()"
-></app-table-navigation>
+<!--<app-todos-table [todosData]="searchData"></app-todos-table>-->
+<!--<app-table-navigation-->
+<!--    [disableNext]="disableNext"-->
+<!--    [disablePrevious]="disablePrevious"-->
+<!--    (toNext)="nextPage()"-->
+<!--    (toPrevious)="previousPage()"-->
+<!--&gt;</app-table-navigation>-->
+<app-todos-table-wrapper></app-todos-table-wrapper>
+
 <router-outlet></router-outlet>

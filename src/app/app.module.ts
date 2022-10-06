@@ -12,6 +12,7 @@ import {ENVIRONMENT} from "./services/environment.service";
 import {HttpClientModule} from "@angular/common/http";
 import { TodosTableComponent } from './components/todos-table/todos-table.component';
 import { TableNavigationComponent } from './components/table-navigation/table-navigation.component';
+import { TodosTableWrapperComponent } from './components/todos-table-wrapper/todos-table-wrapper.component';
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { TableNavigationComponent } from './components/table-navigation/table-na
         FilterSubpageComponent,
         FilteredSubpageComponent,
         TodosTableComponent,
-        TableNavigationComponent
+        TableNavigationComponent,
+        TodosTableWrapperComponent
     ],
     imports: [
         BrowserModule,

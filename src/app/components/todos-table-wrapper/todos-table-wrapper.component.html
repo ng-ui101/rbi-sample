@@ -1,0 +1,8 @@
+<app-todos-table [todosData]="searchData"></app-todos-table>
+
+<app-table-navigation
+    [disableNext]="disableNext"
+    [disablePrevious]="disablePrevious"
+    (toNext)="nextPage()"
+    (toPrevious)="previousPage()"
+></app-table-navigation>
