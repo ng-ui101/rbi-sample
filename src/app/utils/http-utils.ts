@@ -1,5 +1,6 @@
-import {HttpParams} from "@angular/common/http";
+import {HttpParams, HttpResponse} from "@angular/common/http";
 import {ITodoSearchParams} from "../interfaces/ITodoSearchParams";
+import {ITodosRequest} from "../interfaces/ITodosRequest";
 
 export function setTodosFilterParams(params: ITodoSearchParams) {
     let httpParams = new HttpParams()
@@ -15,4 +16,13 @@ export function setTodosFilterParams(params: ITodoSearchParams) {
     }
 
     return httpParams;
+}
+
+export function parseTodosData(request: HttpResponse<any>) {
+    const result: ITodosRequest = {
+        count: +request.headers.get('x-total-count'),
+        data: request.body
+    }
+
+    return result;
 }

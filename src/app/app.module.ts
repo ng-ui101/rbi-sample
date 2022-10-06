@@ -10,6 +10,8 @@ import {FilteredSubpageComponent} from './components/filtered-subpage/filtered-s
 import {environment} from "../environments/environment";
 import {ENVIRONMENT} from "./services/environment.service";
 import {HttpClientModule} from "@angular/common/http";
+import { TodosTableComponent } from './components/todos-table/todos-table.component';
+import { TableNavigationComponent } from './components/table-navigation/table-navigation.component';
 
 @NgModule({
     declarations: [
@@ -17,7 +19,9 @@ import {HttpClientModule} from "@angular/common/http";
         TodosPageComponent,
         CssLayoutPageComponent,
         FilterSubpageComponent,
-        FilteredSubpageComponent
+        FilteredSubpageComponent,
+        TodosTableComponent,
+        TableNavigationComponent
     ],
     imports: [
         BrowserModule,
