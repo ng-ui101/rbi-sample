@@ -6,29 +6,31 @@ import {
     HttpInterceptor, HttpErrorResponse
 } from '@angular/common/http';
 import {Observable, tap} from 'rxjs';
-import {AuthService} from "../services/auth.service";
+import {ErrorHandlerService} from "../services/error-handler.service";
+import {StorageService} from "../services/storage.service";
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
     constructor(
-        private _authService: AuthService
+        private _storageService: StorageService,
+        private _errorHandlerService: ErrorHandlerService
     ) {
     }
 
     public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         request = request.clone({
-            headers: request.headers.set('authorization', this._authService.token),
+            headers: request.headers.set('authorization', this._storageService.getAuthToken()),
         });
 
         return next.handle(request).pipe(
-            tap(
-                () => console.log('Server response'),
-                (error) => {
-                    if (error instanceof HttpErrorResponse && error.status == 401)
-                        console.warn('Unauthorized!')
+            tap({
+                error: (error) => {
+                    if (error instanceof HttpErrorResponse) {
+                        this._errorHandlerService.handle(error);
+                    }
                 }
-            )
+            })
         );
     }
 }
