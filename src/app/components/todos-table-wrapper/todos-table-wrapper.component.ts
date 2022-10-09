@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ITodoSearchParams} from "../../interfaces/ITodoSearchParams";
 import {parseTodosData} from "../../utils/http-utils";
-import {DataService} from "../../services/data.service";
+import {DataApiService} from "../../services/data-api.service";
 import {ITodoItem} from "../../interfaces/ITodoItem";
 
 const PAGE_LIMIT: number = 15;
@@ -14,7 +14,7 @@ const PAGE_LIMIT: number = 15;
 export class TodosTableWrapperComponent {
     @Input() public params: ITodoSearchParams = null;
 
-    public disableNext: boolean = false;
+    public disableNext: boolean = true;
     public disablePrevious: boolean = true;
     public currentPage: number = 1
 
@@ -22,7 +22,7 @@ export class TodosTableWrapperComponent {
     private _count: number = 0;
 
     constructor(
-        private _dataService: DataService
+        private _dataService: DataApiService
     ) {
         this.getSearchData();
     }
@@ -42,22 +42,27 @@ export class TodosTableWrapperComponent {
                 const parsed = parseTodosData(res);
                 this._count = parsed.count;
                 this.searchData = parsed.data;
+
+                this._changeNavigationState();
             })
     }
 
     public nextPage() {
         this.currentPage++;
         this.getSearchData();
-        this._changeNavigationState();
     }
 
     public previousPage() {
         this.currentPage--;
         this.getSearchData();
-        this._changeNavigationState();
     }
 
     private _changeNavigationState() {
+        if (this._count <= PAGE_LIMIT) {
+            this.disableNext = true;
+            this.disablePrevious = true;
+            return;
+        }
         const remainder = this._count - this.currentPage * PAGE_LIMIT;
         this.disableNext = remainder <= 0;
         this.disablePrevious = this.currentPage <= 1;

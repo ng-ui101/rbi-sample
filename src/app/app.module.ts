@@ -8,11 +8,13 @@ import {CssLayoutPageComponent} from './components/css-layout-page/css-layout-pa
 import {FilterSubpageComponent} from './components/filter-subpage/filter-subpage.component';
 import {FilteredSubpageComponent} from './components/filtered-subpage/filtered-subpage.component';
 import {environment} from "../environments/environment";
-import {ENVIRONMENT} from "./services/environment.service";
-import {HttpClientModule} from "@angular/common/http";
-import { TodosTableComponent } from './components/todos-table/todos-table.component';
-import { TableNavigationComponent } from './components/table-navigation/table-navigation.component';
-import { TodosTableWrapperComponent } from './components/todos-table-wrapper/todos-table-wrapper.component';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {TodosTableComponent} from './components/todos-table/todos-table.component';
+import {TableNavigationComponent} from './components/table-navigation/table-navigation.component';
+import {TodosTableWrapperComponent} from './components/todos-table-wrapper/todos-table-wrapper.component';
+import {AuthInterceptor} from "./interceptors/auth.interceptor";
+import {ENVIRONMENT} from "./app-injection-tokens";
+import {AuthService, FakeAuthService} from "./services/auth.service";
 
 @NgModule({
     declarations: [
@@ -30,7 +32,15 @@ import { TodosTableWrapperComponent } from './components/todos-table-wrapper/tod
         AppRoutingModule,
         HttpClientModule
     ],
-    providers: [{provide: ENVIRONMENT, useValue: environment}],
+    providers: [
+        {provide: ENVIRONMENT, useValue: environment},
+        {provide: AuthService, useClass: FakeAuthService},
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: AuthInterceptor,
+            multi: true
+        }
+    ],
     bootstrap: [AppComponent]
 })
 export class AppModule {

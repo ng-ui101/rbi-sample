@@ -8,7 +8,7 @@ import {setTodosFilterParams} from "../utils/http-utils";
 @Injectable({
     providedIn: 'root'
 })
-export class DataService {
+export class DataApiService {
     private readonly _url: string = null;
 
     constructor(

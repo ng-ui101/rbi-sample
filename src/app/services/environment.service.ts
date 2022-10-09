@@ -1,6 +1,5 @@
-import {Inject, Injectable, InjectionToken, Optional} from '@angular/core';
-
-export const ENVIRONMENT = new InjectionToken<{ [key: string]: any }>('environment');
+import {Inject, Injectable, Optional} from '@angular/core';
+import {ENVIRONMENT} from "../app-injection-tokens";
 
 @Injectable({
     providedIn: 'root'

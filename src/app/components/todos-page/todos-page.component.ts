@@ -1,22 +1,30 @@
-import {Component, OnInit} from '@angular/core';
-import {DataService} from "../../services/data.service";
-import {ITodoItem} from "../../interfaces/ITodoItem";
-import {parseTodosData} from "../../utils/http-utils";
-import {ITodoSearchParams} from "../../interfaces/ITodoSearchParams";
-
-const PAGE_LIMIT: number = 15;
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {DataApiService} from "../../services/data-api.service";
+import {AuthService} from "../../services/auth.service";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'app-todos-page',
     templateUrl: './todos-page.component.html',
     styleUrls: ['./todos-page.component.scss']
 })
-export class TodosPageComponent implements OnInit {
+export class TodosPageComponent implements OnInit, OnDestroy {
+    public isLoggedIn$: Observable<boolean> = new Observable<boolean>();
+
     constructor(
-        private _dataService: DataService
+        private _dataService: DataApiService,
+        private _authService: AuthService
     ) {
+        this.isLoggedIn$ = this._authService.isLoggedIn$.asObservable();
+        // FAKE LOGIN:
+        this._authService.login('', '').subscribe();
     }
 
     ngOnInit(): void {
+    }
+
+    ngOnDestroy(): void {
+        // FAKE LOGOUT:
+        this._authService.logout();
     }
 }
