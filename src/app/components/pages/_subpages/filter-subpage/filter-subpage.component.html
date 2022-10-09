@@ -1,1 +1,12 @@
-<p>filter-subpage works!</p>
+<form class="modal-dialog-form" [formGroup]="searchForm" (ngSubmit)="confirm()">
+    <div>
+        <label for="filter-title">TODO title</label>
+        <input id="filter-title" formControlName="title" placeholder="TODO title" type="text">
+    </div>
+
+    <div>
+        <label for="filter-is-complete">is completed</label>
+        <input id="filter-is-complete" formControlName="isCompleted" type="checkbox">
+    </div>
+
+</form>

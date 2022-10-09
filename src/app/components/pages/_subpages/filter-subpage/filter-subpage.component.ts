@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {FormBuilder} from "@angular/forms";
 
 @Component({
     selector: 'app-filter-subpage',
@@ -7,10 +8,20 @@ import {Component, OnInit} from '@angular/core';
 })
 export class FilterSubpageComponent implements OnInit {
 
-    constructor() {
+    public searchForm = this._formBuilder.group({
+        title: '',
+        isCompleted: false
+    });
+
+    constructor(
+        private _formBuilder: FormBuilder
+    ) {
     }
 
     ngOnInit(): void {
     }
 
+    public confirm() {
+
+    }
 }

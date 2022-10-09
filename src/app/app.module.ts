@@ -15,6 +15,8 @@ import {TodosTableWrapperComponent} from './components/todos-view/todos-table-wr
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ENVIRONMENT} from "./app-injection-tokens";
 import {AuthService, FakeAuthService} from "./services/auth.service";
+import {ReactiveFormsModule} from "@angular/forms";
+import { TodosSubpageComponent } from './components/pages/_subpages/todos-subpage/todos-subpage.component';
 
 @NgModule({
     declarations: [
@@ -25,12 +27,14 @@ import {AuthService, FakeAuthService} from "./services/auth.service";
         FilteredSubpageComponent,
         TodosTableComponent,
         TableNavigationComponent,
-        TodosTableWrapperComponent
+        TodosTableWrapperComponent,
+        TodosSubpageComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
-        HttpClientModule
+        HttpClientModule,
+        ReactiveFormsModule
     ],
     providers: [
         {provide: ENVIRONMENT, useValue: environment},

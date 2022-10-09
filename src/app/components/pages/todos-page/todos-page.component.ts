@@ -1,30 +1,36 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DataApiService} from "../../../services/data-api.service";
-import {AuthService} from "../../../services/auth.service";
-import {Observable} from "rxjs";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-    selector: 'app-todos-page',
+    selector: 'app-todos-subpage-page',
     templateUrl: './todos-page.component.html',
     styleUrls: ['./todos-page.component.scss']
 })
 export class TodosPageComponent implements OnInit, OnDestroy {
-    public isLoggedIn$: Observable<boolean> = new Observable<boolean>();
 
     constructor(
         private _dataService: DataApiService,
-        private _authService: AuthService
+        private _router: Router,
+        private _route: ActivatedRoute
     ) {
-        this.isLoggedIn$ = this._authService.isLoggedIn$.asObservable();
-        // FAKE LOGIN:
-        this._authService.login('', '').subscribe();
     }
 
-    ngOnInit(): void {
+    public ngOnInit(): void {
     }
 
-    ngOnDestroy(): void {
-        // FAKE LOGOUT:
-        this._authService.logout();
+    public ngOnDestroy(): void {
+    }
+
+    public goToTodos() {
+        this._router.navigate(['todos'], { relativeTo: this._route });
+    }
+
+    public goToFilter() {
+        this._router.navigate(['filter-form'], { relativeTo: this._route });
+    }
+
+    public goToFiltered() {
+        this._router.navigate(['filtered'], { relativeTo: this._route });
     }
 }

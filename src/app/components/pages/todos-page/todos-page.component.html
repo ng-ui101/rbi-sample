@@ -1,7 +1,8 @@
-<p>todos-page works!</p>
-
-<div [hidden]="isLoggedIn$ | async">You isn't logged in</div>
-
-<app-todos-table-wrapper *ngIf="isLoggedIn$ | async"></app-todos-table-wrapper>
+<nav>
+    <ul>
+        <li><a routerLink="./todos">Show all TODOs</a></li>
+        <li><a routerLink="./filter-form">Filter</a></li>
+    </ul>
+</nav>
 
 <router-outlet></router-outlet>

@@ -5,27 +5,36 @@ import {CssLayoutPageComponent} from "./components/pages/css-layout-page/css-lay
 import {FilterSubpageComponent} from "./components/pages/_subpages/filter-subpage/filter-subpage.component";
 import {FilteredSubpageComponent} from "./components/pages/_subpages/filtered-subpage/filtered-subpage.component";
 import {AuthGuard} from "./guards/auth.guard";
+import {TodosSubpageComponent} from "./components/pages/_subpages/todos-subpage/todos-subpage.component";
 
 
 const routes: Routes = [
     {
-        path: 'todos',
+        path: 'home',
+        canActivate: [AuthGuard],
         component:  TodosPageComponent,
         children: [
             {
+                path:'',
+                redirectTo: 'todos',
+                pathMatch: 'full'
+            },
+            {
+                path: 'todos',
+                component: TodosSubpageComponent
+            },
+            {
                 path: 'filter-form',
-                canActivate: [AuthGuard],
                 component: FilterSubpageComponent
             },
             {
                 path: 'filtered',
-                canActivate: [AuthGuard],
                 component: FilteredSubpageComponent
             }
         ]
     },
     { path: 'css-layout', component: CssLayoutPageComponent },
-    { path: '**', redirectTo: 'todos' }
+    { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
