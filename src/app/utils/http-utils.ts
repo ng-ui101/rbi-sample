@@ -3,9 +3,13 @@ import {ITodoSearchParams} from "../interfaces/ITodoSearchParams";
 import {ITodosRequest} from "../interfaces/ITodosRequest";
 
 export function setTodosFilterParams(params: ITodoSearchParams) {
-    let httpParams = new HttpParams()
-        .set('_page', params.page)
-        .set('_limit', params.limit)
+    let httpParams = new HttpParams();
+
+    if (params.page && params.limit) {
+        httpParams = httpParams
+            .append('_page', params.page)
+            .append('_limit', params.limit)
+    }
 
     if (params.title) {
         httpParams = httpParams.append('title_like', params.title);

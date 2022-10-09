@@ -11,7 +11,10 @@ import {environment} from "../environments/environment";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {TodosTableComponent} from './components/todos-view/todos-table/todos-table.component';
 import {TableNavigationComponent} from './components/todos-view/table-navigation/table-navigation.component';
-import {TodosTableWrapperComponent} from './components/todos-view/todos-table-wrapper/todos-table-wrapper.component';
+import {
+    NoOptimizeTodosTableWrapperComponent,
+    TodosTableWrapperComponent
+} from './components/todos-view/todos-table-wrapper/todos-table-wrapper.component';
 import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ENVIRONMENT} from "./app-injection-tokens";
 import {AuthService, FakeAuthService} from "./services/auth.service";
@@ -28,7 +31,8 @@ import { TodosSubpageComponent } from './components/pages/_subpages/todos-subpag
         TodosTableComponent,
         TableNavigationComponent,
         TodosTableWrapperComponent,
-        TodosSubpageComponent
+        TodosSubpageComponent,
+        NoOptimizeTodosTableWrapperComponent
     ],
     imports: [
         BrowserModule,

@@ -21,10 +21,15 @@ export class FilteredSubpageComponent implements OnInit, OnDestroy {
 
     public ngOnInit(): void {
         this._sub = this._activateRoute.queryParams.subscribe((params) => {
-            this.inputParams = {
-                title: params['title'],
-                completed: params['completed']
-            };
+            this.inputParams = {};
+
+            if (params['completed'] === 'true') {
+                this.inputParams.completed = true;
+            }
+
+            if (!!params['title']) {
+                this.inputParams.title = params['title'];
+            }
         });
     }
 
