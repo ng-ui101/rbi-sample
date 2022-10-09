@@ -1,8 +1,8 @@
 import {Component, Input} from '@angular/core';
-import {ITodoSearchParams} from "../../interfaces/ITodoSearchParams";
-import {parseTodosData} from "../../utils/http-utils";
-import {DataApiService} from "../../services/data-api.service";
-import {ITodoItem} from "../../interfaces/ITodoItem";
+import {ITodoSearchParams} from "../../../interfaces/ITodoSearchParams";
+import {parseTodosData} from "../../../utils/http-utils";
+import {DataApiService} from "../../../services/data-api.service";
+import {ITodoItem} from "../../../interfaces/ITodoItem";
 
 const PAGE_LIMIT: number = 15;
 

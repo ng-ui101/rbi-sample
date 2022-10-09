@@ -1,9 +1,9 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {TodosPageComponent} from "./components/todos-page/todos-page.component";
-import {CssLayoutPageComponent} from "./components/css-layout-page/css-layout-page.component";
-import {FilterSubpageComponent} from "./components/filter-subpage/filter-subpage.component";
-import {FilteredSubpageComponent} from "./components/filtered-subpage/filtered-subpage.component";
+import {TodosPageComponent} from "./components/pages/todos-page/todos-page.component";
+import {CssLayoutPageComponent} from "./components/pages/css-layout-page/css-layout-page.component";
+import {FilterSubpageComponent} from "./components/pages/_subpages/filter-subpage/filter-subpage.component";
+import {FilteredSubpageComponent} from "./components/pages/_subpages/filtered-subpage/filtered-subpage.component";
 import {AuthGuard} from "./guards/auth.guard";
 
 

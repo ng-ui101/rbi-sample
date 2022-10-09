@@ -10,7 +10,7 @@ import {StorageService} from "./storage.service";
 export class AuthService {
     public isLoggedIn$ = new BehaviorSubject<boolean>(false);
 
-    get token(): string {
+    private get _token(): string {
         return this._storageService.getAuthToken();
     }
 
@@ -18,14 +18,14 @@ export class AuthService {
         protected _authApiService: AuthApiService,
         protected _storageService: StorageService
     ) {
-        this.isLoggedIn$.next(!!this.token);
+        this.isLoggedIn$.next(!!this._token);
     }
 
     login(username: string, password: string): Observable<any> {
         return this._authApiService.login(username, password).pipe(
             tap((response: any) => {
                 this.isLoggedIn$.next(true);
-                this._storageService.setAuthToken(response.token);
+                this._storageService.setAuthToken(response._token);
             })
         );
     }

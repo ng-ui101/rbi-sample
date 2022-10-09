@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ITodoItem} from "../../interfaces/ITodoItem";
+import {ITodoItem} from "../../../interfaces/ITodoItem";
 
 @Component({
     selector: 'app-todos-table',

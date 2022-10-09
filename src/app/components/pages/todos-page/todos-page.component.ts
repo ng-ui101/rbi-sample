@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DataApiService} from "../../services/data-api.service";
-import {AuthService} from "../../services/auth.service";
+import {DataApiService} from "../../../services/data-api.service";
+import {AuthService} from "../../../services/auth.service";
 import {Observable} from "rxjs";
 
 @Component({
