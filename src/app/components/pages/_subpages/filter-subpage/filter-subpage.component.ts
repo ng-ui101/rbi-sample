@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
+import {ActivatedRoute, Router} from "@angular/router";
+import {ITodoSearchParams} from "../../../../interfaces/ITodoSearchParams";
 
 @Component({
     selector: 'app-filter-subpage',
@@ -10,11 +12,13 @@ export class FilterSubpageComponent implements OnInit {
 
     public searchForm = this._formBuilder.group({
         title: '',
-        isCompleted: false
+        completed: false
     });
 
     constructor(
-        private _formBuilder: FormBuilder
+        private _formBuilder: FormBuilder,
+        private _router: Router,
+        private _route: ActivatedRoute
     ) {
     }
 
@@ -22,6 +26,17 @@ export class FilterSubpageComponent implements OnInit {
     }
 
     public confirm() {
+        const params: ITodoSearchParams = {
+            ...this.searchForm.value
+        }
 
+        this._goToFiltered(params);
+    }
+
+    private _goToFiltered(params: ITodoSearchParams) {
+        this._router.navigate(['../filtered'], {
+            relativeTo: this._route,
+            queryParams: params
+        });
     }
 }

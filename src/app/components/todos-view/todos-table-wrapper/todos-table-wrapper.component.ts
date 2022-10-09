@@ -1,17 +1,17 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ITodoSearchParams} from "../../../interfaces/ITodoSearchParams";
 import {parseTodosData} from "../../../utils/http-utils";
 import {DataApiService} from "../../../services/data-api.service";
 import {ITodoItem} from "../../../interfaces/ITodoItem";
 
-const PAGE_LIMIT: number = 15;
+const DEFAULT_PAGE_LIMIT: number = 15;
 
 @Component({
     selector: 'app-todos-table-wrapper',
     templateUrl: './todos-table-wrapper.component.html',
     styleUrls: ['./todos-table-wrapper.component.scss']
 })
-export class TodosTableWrapperComponent {
+export class TodosTableWrapperComponent implements OnInit{
     @Input() public params: ITodoSearchParams = null;
 
     public disableNext: boolean = true;
@@ -24,16 +24,19 @@ export class TodosTableWrapperComponent {
     constructor(
         private _dataService: DataApiService
     ) {
+    }
+
+    public ngOnInit(): void {
         this.getSearchData();
     }
 
     public getSearchData() {
-        let innerParams: ITodoSearchParams = {limit: PAGE_LIMIT, page: this.currentPage}
+        let innerParams: ITodoSearchParams = {limit: DEFAULT_PAGE_LIMIT, page: this.currentPage}
 
         if (this.params) {
             innerParams = {
-                ...this.params,
-                ...innerParams
+                ...innerParams,
+                ...this.params
             }
         }
 
@@ -58,12 +61,12 @@ export class TodosTableWrapperComponent {
     }
 
     private _changeNavigationState() {
-        if (this._count <= PAGE_LIMIT) {
+        if (this._count <= DEFAULT_PAGE_LIMIT) {
             this.disableNext = true;
             this.disablePrevious = true;
             return;
         }
-        const remainder = this._count - this.currentPage * PAGE_LIMIT;
+        const remainder = this._count - this.currentPage * DEFAULT_PAGE_LIMIT;
         this.disableNext = remainder <= 0;
         this.disablePrevious = this.currentPage <= 1;
     }
