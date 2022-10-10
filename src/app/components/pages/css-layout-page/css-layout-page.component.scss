@@ -1,0 +1,32 @@
+.promo-page {
+    padding: 140px;
+    display: grid;
+    font-family: 'Montserrat', sans-serif;
+
+    &__header {
+        display: flex;
+        margin: unset;
+        max-width: 660px;
+        font-style: normal;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 59px;
+    }
+
+    &__offers {
+        margin-top: 60px;
+    }
+}
+
+.offers {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 40px;
+
+    &__offer {
+        box-shadow: 0 0 15px rgba(104, 128, 155, 0.15);
+        max-width: 360px;
+        min-width: 240px;
+        height: 360px;
+    }
+}

@@ -1,1 +1,19 @@
-<p>css-layout-page works!</p>
+<h2 class="promo-page__header">Успейте оформить подписку со скидкой</h2>
+
+<div class="promo-page__offers offers">
+    <app-offer-widget
+        class="offers__offer"
+        [offerInfo]="getOfferInfo('short')"
+    ></app-offer-widget>
+
+    <app-offer-widget
+        class="offers__offer"
+        [offerInfo]="getOfferInfo('middle')"
+        [offerRecommend]="true"
+    ></app-offer-widget>
+
+    <app-offer-widget
+        class="offers__offer"
+        [offerInfo]="getOfferInfo('long')"
+    ></app-offer-widget>
+</div>

@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -19,7 +19,12 @@ import {AuthInterceptor} from "./interceptors/auth.interceptor";
 import {ENVIRONMENT} from "./app-injection-tokens";
 import {AuthService, FakeAuthService} from "./services/auth.service";
 import {ReactiveFormsModule} from "@angular/forms";
-import { TodosSubpageComponent } from './components/pages/_subpages/todos-subpage/todos-subpage.component';
+import {TodosSubpageComponent} from './components/pages/_subpages/todos-subpage/todos-subpage.component';
+import {OfferWidgetComponent} from './components/widgets/offer-widget/offer-widget.component';
+import localeRu from '@angular/common/locales/ru';
+import {registerLocaleData} from "@angular/common";
+
+registerLocaleData(localeRu);
 
 @NgModule({
     declarations: [
@@ -32,7 +37,8 @@ import { TodosSubpageComponent } from './components/pages/_subpages/todos-subpag
         TableNavigationComponent,
         TodosTableWrapperComponent,
         TodosSubpageComponent,
-        NoOptimizeTodosTableWrapperComponent
+        NoOptimizeTodosTableWrapperComponent,
+        OfferWidgetComponent
     ],
     imports: [
         BrowserModule,
@@ -47,6 +53,10 @@ import { TodosSubpageComponent } from './components/pages/_subpages/todos-subpag
             provide: HTTP_INTERCEPTORS,
             useClass: AuthInterceptor,
             multi: true
+        },
+        {
+            provide: LOCALE_ID,
+            useValue: 'ru-RU'
         }
     ],
     bootstrap: [AppComponent]

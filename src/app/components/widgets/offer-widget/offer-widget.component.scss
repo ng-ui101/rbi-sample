@@ -1,0 +1,50 @@
+@import "src/styles/variables";
+
+.offer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: $yellow-light;
+
+    &--recommended {
+        background-color: $yellow;
+    }
+}
+
+.offer-header {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__term {
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+    }
+
+    &__description {
+        margin: unset;
+        font-weight: 700;
+        font-size: 25px;
+        line-height: 30px;
+    }
+}
+
+.offer-body {
+    &__price-wrapper {
+        display: flex;
+    }
+
+    &__price {
+
+    }
+
+    &__old-price {
+
+    }
+}
+
+

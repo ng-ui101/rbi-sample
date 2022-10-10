@@ -1,0 +1,19 @@
+<div class="offer-header">
+    <span class="offer-header__term">{{offerInfo.term}}</span>
+    <h4 class="offer-header__description">{{offerInfo.description}}</h4>
+</div>
+
+<div class="offer-body">
+    <div class="offer-body offer-body__price-wrapper">
+        <span class="offer-body__price">{{offerInfo.price | currency : "RUB"}}</span>
+        <span class="offer-body__old-price">{{offerInfo.oldPrice | currency : "RUB"}}</span>
+    </div>
+
+    <span>В месяц</span>
+    <button (click)="offerInfo.ctaCallback()">{{offerInfo.ctaText}}</button>
+    <span>{{offerInfo.ctaDescription}}</span>
+</div>
+
+
+
+
