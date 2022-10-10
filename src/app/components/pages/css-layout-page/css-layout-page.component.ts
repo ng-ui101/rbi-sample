@@ -26,8 +26,7 @@ export class CssLayoutPageComponent implements OnInit {
                     price: 299,
                     oldPrice: 499,
                     ctaText: 'Начать 7 дней бесплатно',
-                    ctaCallback(): void {
-                    },
+                    ctaCallback(): void { console.log(this.offerType) },
                     ctaDescription: 'Ежемесячная оплата',
                 }
             case 'middle':
@@ -38,8 +37,7 @@ export class CssLayoutPageComponent implements OnInit {
                     price: 249,
                     oldPrice: 499,
                     ctaText: 'Купить подписку',
-                    ctaCallback(): void {
-                    },
+                    ctaCallback(): void { console.log(this.offerType) },
                     ctaDescription: 'При оплате 2990 ₽ за год',
                 }
             case 'long':
@@ -50,8 +48,7 @@ export class CssLayoutPageComponent implements OnInit {
                     price: 41,
                     oldPrice: 499,
                     ctaText: 'Купить подписку',
-                    ctaCallback(): void {
-                    },
+                    ctaCallback(): void { console.log(this.offerType) },
                     ctaDescription: 'При оплате 24 990 ₽ навсегда',
                 }
         }

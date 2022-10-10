@@ -4,14 +4,14 @@
 </div>
 
 <div class="offer-body">
-    <div class="offer-body offer-body__price-wrapper">
-        <span class="offer-body__price">{{offerInfo.price | currency : "RUB"}}</span>
-        <span class="offer-body__old-price">{{offerInfo.oldPrice | currency : "RUB"}}</span>
+    <div class="offer-body__price-wrapper">
+        <span class="offer-body__price">{{offerInfo.price | currency : "RUB" : 'symbol' : '0.0-0'}}</span>
+        <span class="offer-body__old-price">{{offerInfo.oldPrice | currency : "RUB" : 'symbol' : '0.0-0'}}</span>
     </div>
 
-    <span>В месяц</span>
-    <button (click)="offerInfo.ctaCallback()">{{offerInfo.ctaText}}</button>
-    <span>{{offerInfo.ctaDescription}}</span>
+    <span class="offer-body__monthly-text">в месяц</span>
+    <button (click)="offerInfo.ctaCallback()" class="offer-body__cta button">{{offerInfo.ctaText}}</button>
+    <span class="offer-body__cta-description">{{offerInfo.ctaDescription}}</span>
 </div>
 
 

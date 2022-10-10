@@ -8,6 +8,7 @@
     padding: 40px;
     border-radius: 15px;
     background-color: $yellow-light;
+    gap: 20px;
 
     &--recommended {
         background-color: $yellow;
@@ -17,6 +18,7 @@
 .offer-header {
     display: flex;
     flex-direction: column;
+    max-width: 280px;
     gap: 10px;
 
     &__term {
@@ -34,16 +36,50 @@
 }
 
 .offer-body {
+    display: grid;
+    align-self: stretch;
+
     &__price-wrapper {
         display: flex;
+        flex-direction: row;
+        align-items: end;
     }
 
     &__price {
-
+        font: inherit;
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 59px;
     }
 
     &__old-price {
+        margin-left: 10px;
+        font: inherit;
+        font-weight: 400;
+        font-size: 20px;
+        color: $grey;
+        line-height: 24px;
+        text-decoration-line: line-through;
+    }
 
+    &__monthly-text {
+        font: inherit;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    &__cta {
+        margin-top: 20px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    &__cta-description {
+        margin: 10px auto 0;
+        text-align: center;
+        color: $grey;
     }
 }
 
