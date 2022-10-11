@@ -22,13 +22,40 @@
 }
 
 .offers {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
     gap: 40px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 
     &__offer {
         box-shadow: 0 0 15px rgba(104, 128, 155, 0.15);
         max-width: 360px;
         max-height: 407px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .promo-page {
+        padding: 64px;
+
+        &__header {
+            font-size: 24px;
+            line-height: 29.26px;
+        }
+    }
+
+    .offers {
+        margin-top: 40px;
+    }
+}
+
+@media screen and (max-width: 426px) {
+    .promo-page {
+        padding: 58px 16px 16px;
+    }
+
+    .offers {
+        gap: 20px;
     }
 }

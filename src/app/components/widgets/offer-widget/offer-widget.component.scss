@@ -12,6 +12,22 @@
 
     &--recommended {
         background-color: $yellow;
+
+        @media screen and (max-width: 1456px) {
+            order: 2;
+        }
+
+        @media screen and (max-width: 1056px) {
+            order: unset;
+        }
+
+        @media screen and (min-width: 1056px) {
+            order: 2;
+        }
+
+        @media screen and (min-width: 1456px) {
+            order: unset;
+        }
     }
 }
 
@@ -77,6 +93,7 @@
     }
 
     &__cta-description {
+        font-size: 14px;
         margin: 10px auto 0;
         text-align: center;
         color: $grey;
