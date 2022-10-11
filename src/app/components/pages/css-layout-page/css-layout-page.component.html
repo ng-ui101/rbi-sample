@@ -4,16 +4,19 @@
     <app-offer-widget
         class="offers__offer"
         [offerInfo]="getOfferInfo('short')"
+        [isMobileView]="isMobileView"
     ></app-offer-widget>
 
     <app-offer-widget
         class="offers__offer"
         [offerInfo]="getOfferInfo('middle')"
+        [isMobileView]="isMobileView"
         [offerRecommend]="true"
     ></app-offer-widget>
 
     <app-offer-widget
         class="offers__offer"
         [offerInfo]="getOfferInfo('long')"
+        [isMobileView]="isMobileView"
     ></app-offer-widget>
 </div>

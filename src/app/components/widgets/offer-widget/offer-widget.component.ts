@@ -8,13 +8,17 @@ import {IOffer} from "../../../interfaces/IOffer";
     encapsulation: ViewEncapsulation.None
 })
 export class OfferWidgetComponent implements OnInit {
-    @HostBinding('class.offer') private _offer = true;
+    @Input() public offerInfo: IOffer = null;
 
     @Input()
     @HostBinding('class.offer--recommended')
     public offerRecommend = false;
 
-    @Input() public offerInfo: IOffer = null;
+    @Input()
+    @HostBinding('class.offer--mobile')
+    public isMobileView: boolean = false;
+
+    @HostBinding('class.offer') private _offer = true;
 
     constructor() {
     }

@@ -1,17 +1,56 @@
 <div class="offer-header">
-    <span class="offer-header__term">{{offerInfo.term}}</span>
-    <h4 class="offer-header__description">{{offerInfo.description}}</h4>
+    <span class="offer-header__term" [class.offer-header__term--mobile]="isMobileView">
+        {{offerInfo.term}}
+    </span>
+
+    <h4 class="offer-header__description" [class.offer-header__description--mobile]="isMobileView">
+        {{offerInfo.description}}
+    </h4>
 </div>
 
-<div class="offer-body">
+<div class="offer-body" [class.offer-body--mobile]="isMobileView">
     <div class="offer-body__price-wrapper">
-        <span class="offer-body__price">{{offerInfo.price | currency : "RUB" : 'symbol' : '0.0-0'}}</span>
-        <span class="offer-body__old-price">{{offerInfo.oldPrice | currency : "RUB" : 'symbol' : '0.0-0'}}</span>
+        <span class="offer-body__price" [class.offer-body__price--mobile]="isMobileView">
+            {{offerInfo.price | currency : "RUB" : 'symbol' : '0.0-0'}}
+        </span>
+
+        <span class="offer-body__old-price" [class.offer-body__old-price--mobile]="isMobileView">
+            {{offerInfo.oldPrice | currency : "RUB" : 'symbol' : '0.0-0'}}
+        </span>
     </div>
 
-    <span class="offer-body__monthly-text">в месяц</span>
-    <button (click)="offerInfo.ctaCallback()" class="offer-body__cta button">{{offerInfo.ctaText}}</button>
-    <span class="offer-body__cta-description">{{offerInfo.ctaDescription}}</span>
+    <span class="offer-body__monthly-text" [class.offer-body__monthly-text--mobile]="isMobileView">
+        в месяц
+    </span>
+
+    <button
+        *ngIf="!isMobileView"
+        class="offer-body__cta button"
+        (click)="offerInfo.ctaCallback()"
+    >
+        {{offerInfo.ctaText}}
+    </button>
+
+    <button
+        *ngIf="isMobileView"
+        class="offer-body__cta offer-body__cta--mobile button"
+        (click)="offerInfo.ctaCallback()"
+    >
+        <i class="icon-angle-right"></i>
+    </button>
+
+    <div class="offer-body__cta-description-wrapper">
+        <span
+            *ngIf="isMobileView && offerInfo.cents"
+            class="offer-body__cents"
+        >
+            -{{offerInfo.cents}}%
+        </span>
+
+        <span class="offer-body__cta-description" [class.offer-body__cta-description--mobile]="isMobileView">
+            {{offerInfo.ctaDescription}}
+        </span>
+    </div>
 </div>
 
 

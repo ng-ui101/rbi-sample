@@ -1,4 +1,4 @@
-import {Component, HostBinding, OnInit, ViewEncapsulation} from '@angular/core';
+import {Component, HostBinding, HostListener, OnInit, ViewEncapsulation} from '@angular/core';
 import {IOffer, OfferType} from "../../../interfaces/IOffer";
 
 @Component({
@@ -8,9 +8,21 @@ import {IOffer, OfferType} from "../../../interfaces/IOffer";
     encapsulation: ViewEncapsulation.None
 })
 export class CssLayoutPageComponent implements OnInit {
+    public get isMobileView(): boolean {
+        return innerWidth <= 375;
+    }
+
+    public innerWidth: number
+
     @HostBinding('class.promo-page') private _promoPage = true;
 
-    constructor() {
+    @HostListener('window:resize', ['$event'])
+    private _onResize(event: any) {
+        this.innerWidth = event.target.innerWidth;
+    }
+
+    constructor(
+    ) {
     }
 
     ngOnInit(): void {
@@ -39,6 +51,7 @@ export class CssLayoutPageComponent implements OnInit {
                     ctaText: 'Купить подписку',
                     ctaCallback(): void { console.log(this.offerType) },
                     ctaDescription: 'При оплате 2990 ₽ за год',
+                    cents: 50
                 }
             case 'long':
                 return {
@@ -50,6 +63,7 @@ export class CssLayoutPageComponent implements OnInit {
                     ctaText: 'Купить подписку',
                     ctaCallback(): void { console.log(this.offerType) },
                     ctaDescription: 'При оплате 24 990 ₽ навсегда',
+                    cents: 92
                 }
         }
     }

@@ -9,4 +9,5 @@ export interface IOffer {
     ctaText: string;
     ctaCallback: () => void;
     ctaDescription: string;
+    cents?: number;
 }
