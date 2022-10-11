@@ -1,11 +1,14 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostBinding, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
 
 @Component({
     selector: 'app-table-navigation',
     templateUrl: './table-navigation.component.html',
-    styleUrls: ['./table-navigation.component.scss']
+    styleUrls: ['./table-navigation.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TableNavigationComponent implements OnInit {
+    @HostBinding('class.table-navigation') private _nav = true;
+
     @Input() public disableNext: boolean = false;
     @Input() public disablePrevious: boolean = false;
 

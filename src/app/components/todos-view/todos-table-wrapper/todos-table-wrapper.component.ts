@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, HostBinding, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import {ITodoSearchParams} from "../../../interfaces/ITodoSearchParams";
 import {parseTodosData} from "../../../utils/http-utils";
 import {DataApiService} from "../../../services/data-api.service";
@@ -10,9 +10,12 @@ const DEFAULT_PAGE_LIMIT: number = 15;
 @Component({
     selector: 'app-todos-table-wrapper',
     templateUrl: './todos-table-wrapper.component.html',
-    styleUrls: ['./todos-table-wrapper.component.scss']
+    styleUrls: ['./todos-table-wrapper.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class TodosTableWrapperComponent implements OnInit {
+    @HostBinding('class.table-wrapper') protected wrapper = true;
+
     @Input() public params: ITodoSearchParams = null;
 
     public disableNext: boolean = true;
@@ -78,7 +81,8 @@ export class TodosTableWrapperComponent implements OnInit {
 @Component({
     selector: 'app-no-optimize-todos-table-wrapper',
     templateUrl: './todos-table-wrapper.component.html',
-    styleUrls: ['./todos-table-wrapper.component.scss']
+    styleUrls: ['./todos-table-wrapper.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class NoOptimizeTodosTableWrapperComponent extends TodosTableWrapperComponent {
     public override showNavigation = false;

@@ -1,21 +1,11 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DataApiService} from "../../../services/data-api.service";
+import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
 
 @Component({
-    selector: 'app-todos-subpage-page',
+    selector: 'app-todos-page',
     templateUrl: './todos-page.component.html',
-    styleUrls: ['./todos-page.component.scss']
+    styleUrls: ['./todos-page.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class TodosPageComponent implements OnInit, OnDestroy {
-
-    constructor(
-        private _dataService: DataApiService,
-    ) {
-    }
-
-    public ngOnInit(): void {
-    }
-
-    public ngOnDestroy(): void {
-    }
+export class TodosPageComponent {
+    @HostBinding('class.todos-page') private _page = true;
 }

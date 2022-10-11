@@ -1,10 +1,12 @@
-<nav>
+<nav class="nav-hrefs">
+    <h3>Navigation:</h3>
+
     <ul>
-        <li><a routerLink="./todos">Show all TODOs</a></li>
-        <li><a routerLink="./filter-form">Filter</a></li>
+        <li><a routerLink="./todos" routerLinkActive="activated-route">Show all TODOs</a></li>
+        <li><a routerLink="./filter-form" routerLinkActive="activated-route">Filter</a></li>
     </ul>
 </nav>
 
 <router-outlet></router-outlet>
 
-<a [href]="'../css-layout'">to CSS layout</a>
+<a class="css-layout-href" [href]="'../css-layout'">to CSS layout</a>

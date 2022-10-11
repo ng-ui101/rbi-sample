@@ -1,2 +1,7 @@
-<button (click)="previous()" [disabled]="disablePrevious">previous</button>
-<button (click)="next()" [disabled]="disableNext">next</button>
+<button class="button table-navigation__button" [disabled]="disablePrevious" (click)="previous()">
+    <i class="icon-angle-left"></i>
+</button>
+
+<button class="button table-navigation__button" [disabled]="disableNext" (click)="next()">
+    <i class="icon-angle-right"></i>
+</button>

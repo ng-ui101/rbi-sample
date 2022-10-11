@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, ViewEncapsulation} from '@angular/core';
 import {FormBuilder} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
 import {ITodoSearchParams} from "../../../../interfaces/ITodoSearchParams";
@@ -6,9 +6,11 @@ import {ITodoSearchParams} from "../../../../interfaces/ITodoSearchParams";
 @Component({
     selector: 'app-filter-subpage',
     templateUrl: './filter-subpage.component.html',
-    styleUrls: ['./filter-subpage.component.scss']
+    styleUrls: ['./filter-subpage.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
-export class FilterSubpageComponent implements OnInit {
+export class FilterSubpageComponent {
+    @HostBinding('class.todos-filter') private _filter = true;
 
     public searchForm = this._formBuilder.group({
         title: '',
@@ -20,9 +22,6 @@ export class FilterSubpageComponent implements OnInit {
         private _router: Router,
         private _route: ActivatedRoute
     ) {
-    }
-
-    ngOnInit(): void {
     }
 
     public confirm() {

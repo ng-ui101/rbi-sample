@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, HostBinding, OnDestroy, OnInit, ViewEncapsulation} from '@angular/core';
 import {ITodoSearchParams} from "../../../../interfaces/ITodoSearchParams";
 import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
@@ -6,9 +6,12 @@ import {Subscription} from "rxjs";
 @Component({
     selector: 'app-filtered-subpage',
     templateUrl: './filtered-subpage.component.html',
-    styleUrls: ['./filtered-subpage.component.scss']
+    styleUrls: ['./filtered-subpage.component.scss'],
+    encapsulation: ViewEncapsulation.None
 })
 export class FilteredSubpageComponent implements OnInit, OnDestroy {
+    @HostBinding('class.todos-filtered') private _filtered = true;
+
     public inputParams: ITodoSearchParams = null;
 
     private _sub: Subscription = Subscription.EMPTY;
